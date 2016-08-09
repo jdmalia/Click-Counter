@@ -18,6 +18,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        let backgroundButton = UIButton()
+        backgroundButton.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height)
+        self.view.addSubview(backgroundButton)
+        backgroundButton.addTarget(self, action: #selector(ViewController.changeBackgroundColor),
+                                   forControlEvents: UIControlEvents.TouchUpInside)
+        
         // Counter label A
         let labelA = UILabel()
         labelA.frame = CGRectMake(150, 150, 60, 60)
@@ -64,5 +70,16 @@ class ViewController: UIViewController {
         self.counterLabelB.text = "\(self.count)"
     }
 
+    func changeBackgroundColor() {
+        let r = randomCGFloat()
+        let g = randomCGFloat()
+        let b = randomCGFloat()
+        self.view.backgroundColor = UIColor(red: r, green: g, blue: b, alpha: 1.0)
+    }
+    
+    // Returns a random CGFloat between 0 and 1
+    func randomCGFloat() -> CGFloat {
+        return CGFloat(arc4random() % 255) / 255.0
+    }
 }
 
