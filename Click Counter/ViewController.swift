@@ -11,15 +11,16 @@ import UIKit
 class ViewController: UIViewController {
     
     var count:Int = 0
-    var counterLabelA:UILabel!
+    @IBOutlet var counterLabelA:UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
-    func incrementCount() {
+    @IBAction func incrementCount() {
         self.count += 1
+        print("HERE!")
         self.counterLabelA.text = "\(self.count)"
     }
 }
